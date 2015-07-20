@@ -5,6 +5,6 @@ Bundler.require(:default)
 
 class App < Sinatra::Base
   get '/' do
-    'hello world'
+    haml :index
   end
 end
