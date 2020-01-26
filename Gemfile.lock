@@ -5,14 +5,14 @@ GEM
       temple (~> 0.7.6)
       thor
       tilt
-    passenger (5.0.28)
+    passenger (5.1.0)
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    rack (1.6.4)
+    rack (1.6.12)
     rack-protection (1.5.3)
       rack
-    rake (11.1.2)
+    rake (13.0.1)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
