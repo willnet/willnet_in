@@ -9,7 +9,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    rack (1.6.4)
+    rack (1.6.12)
     rack-protection (1.5.3)
       rack
     rake (11.1.2)
