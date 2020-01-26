@@ -14,7 +14,7 @@ class App < Sinatra::Base
     redirect to('http://blog.willnet.in/feed')
   end
 
-  get /([0-9]+)/ do |id|
+  get %r{/([0-9]+)} do |id|
     Database.start do |db|
       result = db.connection.exec('SELECT * FROM entries WHERE id = $1', [id])
       return 404 if result.nil? || result.none?
