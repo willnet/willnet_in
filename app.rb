@@ -7,7 +7,7 @@ Bundler.require(:default)
 
 class App < Sinatra::Base
   get '/' do
-    haml :index
+    redirect 'https://willnet.jp/', 301
   end
 
   get '/index.atom' do
@@ -19,7 +19,7 @@ class App < Sinatra::Base
       result = db.connection.exec('SELECT * FROM entries WHERE id = $1', [id])
       return 404 if result.nil? || result.none?
       created_at = DateTime.parse(result.first['created_at'])
-      redirect "http://blog.willnet.in/entry/#{created_at.strftime('%Y/%m/%d/%H%M%S')}", 301
+      redirect "https://blog.willnet.in/entry/#{created_at.strftime('%Y/%m/%d/%H%M%S')}", 301
     end
   end
 
