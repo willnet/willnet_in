@@ -11,7 +11,7 @@ GEM
     rack-protection (2.1.0)
       rack
     rake (13.0.3)
-    ruby2_keywords (0.0.2)
+    ruby2_keywords (0.0.4)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
@@ -28,7 +28,7 @@ DEPENDENCIES
   sinatra
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   1.17.2
+   2.2.15
