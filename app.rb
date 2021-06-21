@@ -11,7 +11,7 @@ class App < Sinatra::Base
   end
 
   get '/index.atom' do
-    redirect to('http://blog.willnet.in/feed')
+    redirect to('https://blog.willnet.in/feed')
   end
 
   get %r{/([0-9]+)} do |id|
