@@ -3,7 +3,7 @@ GEM
   specs:
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    passenger (6.0.15)
+    passenger (6.0.16)
       rack
       rake (>= 0.8.1)
     pg (1.4.5)
