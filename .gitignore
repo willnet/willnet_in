@@ -1,3 +1,4 @@
 exec
 vendor/bundle
 passenger.5000*
+.env

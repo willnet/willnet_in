@@ -12,6 +12,10 @@ class App < Sinatra::Base
     redirect 'https://willnet.jp/', 301
   end
 
+  get '/up' do
+    return 200
+  end
+
   get '/index.atom' do
     redirect to('https://blog.willnet.in/feed')
   end
