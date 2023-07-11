@@ -8,10 +8,10 @@ image: willnet/willnet_in
 servers:
   web:
     hosts: 139.59.254.11
-  labels:
-    traefik.http.routers.willnet_in.rule: Host(`willnet.in`)
-    traefik.http.routers.willnet_in.entrypoints: websecure
-    traefik.http.routers.willnet_in.tls.certresolver: letsencrypt
+    labels:
+      traefik.http.routers.willnet_in.rule: Host(`willnet.in`)
+      traefik.http.routers.willnet_in.entrypoints: websecure
+      traefik.http.routers.willnet_in.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
 registry:
