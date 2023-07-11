@@ -24,7 +24,7 @@ traefik:
       - "80:80"
       - "443:443"
     volume:
-      - "./letsencrypt:/letsencrypt"
+      - "/letsencrypt:/letsencrypt"
   env:
     secret:
       - DNSIMPLE_OAUTH_TOKEN
