@@ -12,7 +12,9 @@ servers:
       traefik.http.routers.willnet_in.rule: Host(`willnet.in`)
       traefik.http.routers.willnet_in.entrypoints: websecure
       traefik.http.routers.willnet_in.tls.certresolver: letsencrypt
-
+      traefik.http.routers.www_willnet_in.rule: Host(`www.willnet.in`)
+      traefik.http.routers.www_willnet_in.entrypoints: websecure
+      traefik.http.routers.www_willnet_in.tls.certresolver: letsencrypt
 registry:
   username: willnet
   password:
@@ -24,9 +26,6 @@ traefik:
       - "443:443"
     volume:
       - "/letsencrypt:/letsencrypt"
-  env:
-    secret:
-      - DNSIMPLE_OAUTH_TOKEN
   args:
     entryPoints.web.address: ":80"
     entryPoints.websecure.address: ":443"
@@ -35,8 +34,8 @@ traefik:
     entryPoints.web.http.redirections.entrypoint.permanent: true
     certificatesResolvers.letsencrypt.acme.email: "netwillnet@gmail.com"
     certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
-    certificatesResolvers.letsencrypt.acme.dnschallenge: true
-    certificatesResolvers.letsencrypt.acme.dnschallenge.provider: dnsimple
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
 
 # Configure a custom healthcheck (default is /up on port 3000)
 # healthcheck:
