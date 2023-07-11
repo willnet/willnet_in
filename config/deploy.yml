@@ -6,7 +6,12 @@ image: willnet/willnet_in
 
 # Deploy to these servers.
 servers:
-  - 139.59.254.11
+  web:
+    hosts: 139.59.254.11
+  labels:
+    traefik.http.routers.willnet_in.rule: Host(`willnet.in`)
+    traefik.http.routers.willnet_in.entrypoints: websecure
+    traefik.http.routers.willnet_in.tls.certresolver: letsencrypt
 
 # Credentials for your image host.
 registry:
@@ -65,10 +70,26 @@ registry:
 #       - data:/data
 
 # Configure custom arguments for Traefik
-# traefik:
-#   args:
-#     accesslog: true
-#     accesslog.format: json
+traefik:
+  options:
+    publish:
+      - "80:80"
+      - "443:443"
+    volume:
+      - "./letsencrypt:/letsencrypt"
+  env:
+    secret:
+      - DNSIMPLE_OAUTH_TOKEN
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.websecure.address: ":443"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    certificatesResolvers.letsencrypt.acme.email: "netwillnet@gmail.com"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.dnschallenge: true
+    certificatesResolvers.letsencrypt.acme.dnschallenge.provider: dnsimple
 
 # Configure a custom healthcheck (default is /up on port 3000)
 # healthcheck:
