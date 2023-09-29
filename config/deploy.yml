@@ -18,7 +18,7 @@ servers:
 registry:
   username: willnet
   password:
-    - MRSK_REGISTRY_PASSWORD
+    - KAMAL_REGISTRY_PASSWORD
 
 traefik:
   options:

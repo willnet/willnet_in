@@ -7,7 +7,7 @@ willnet.inから各ドメインへのリダイレクタ
 ## デプロイの仕方
 
 ```ruby
-gem i mrsk
-mrsk envify 
-mrsk deploy
+gem i kamal
+kamal envify 
+kamal deploy
 ``` 
