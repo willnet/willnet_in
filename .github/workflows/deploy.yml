@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
-      MRSK_REGISTRY_PASSWORD: ${{ secrets.MRSK_REGISTRY_PASSWORD }}
+      KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
@@ -21,7 +21,7 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      - name: install mrsk
-        run: gem install mrsk
+      - name: install kamal
+        run: gem install kamal
       - name: deploy
-        run: mrsk deploy
+        run: kamal deploy
