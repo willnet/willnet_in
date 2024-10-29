@@ -14,7 +14,7 @@ jobs:
     env:
       KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
