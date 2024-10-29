@@ -7,7 +7,8 @@ image: willnet/willnet_in
 # Deploy to these servers.
 servers:
   web:
-    hosts: 139.59.254.11
+    hosts:
+      - 139.59.254.11
     labels:
       traefik.http.routers.willnet_in.rule: Host(`willnet.in`)
       traefik.http.routers.willnet_in.entrypoints: websecure
