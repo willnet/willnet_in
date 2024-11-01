@@ -22,6 +22,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: install kamal
-        run: gem install kamal -v 1.9.2
+        run: gem install kamal
       - name: deploy
         run: kamal deploy
