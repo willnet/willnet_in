@@ -8,6 +8,7 @@ proxy:
 servers:
   - 139.59.254.11
 
+deploy_timeout: 60
 
 registry:
   username: willnet
