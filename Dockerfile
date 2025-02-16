@@ -21,5 +21,5 @@ COPY . .
 RUN useradd willnet --home /willnet_in --shell /bin/bash
 USER willnet:willnet
 
-EXPOSE 3000
-CMD ["bundler", "exec", "puma", "--port", "3000"]
+EXPOSE 80
+CMD ["bundle", "exec", "puma", "--port", "80"]

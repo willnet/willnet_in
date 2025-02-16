@@ -1,7 +1,6 @@
 service: willnet_in
 image: willnet/willnet_in
 proxy:
-  app_port: 3000
   hosts:
     - willnet.in
     - www.willnet.in
