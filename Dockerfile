@@ -22,4 +22,4 @@ RUN useradd willnet --home /willnet_in --shell /bin/bash
 USER willnet:willnet
 
 EXPOSE 80
-CMD ["bundle", "exec", "puma", "--port", "80"]
+CMD ["bundle", "exec", "puma", "--port", "80", "-e", "production"]
