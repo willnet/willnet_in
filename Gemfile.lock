@@ -2,18 +2,23 @@ GEM
   remote: https://rubygems.org/
   specs:
     base64 (0.2.0)
-    logger (1.6.1)
+    lambda-console-ruby (1.0.0)
+    lamby (6.0.1)
+      lambda-console-ruby
+      rack (>= 3.0.0)
+    logger (1.7.0)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.7.4)
     puma (6.6.0)
       nio4r (~> 2.0)
-    rack (3.1.12)
+    rack (3.1.8)
     rack-protection (4.1.1)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
-    rack-session (2.0.0)
+    rack-session (2.1.0)
+      base64 (>= 0.1.0)
       rack (>= 3.0.0)
     ruby2_keywords (0.0.5)
     sinatra (4.1.1)
@@ -23,30 +28,16 @@ GEM
       rack-protection (= 4.1.1)
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
-    tilt (2.4.0)
+    tilt (2.6.0)
 
 PLATFORMS
-  ruby
+  aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
+  lamby
   puma
   sinatra
 
-CHECKSUMS
-  base64 (0.2.0) sha256=0f25e9b21a02a0cc0cea8ef92b2041035d39350946e8789c562b2d1a3da01507
-  logger (1.6.1) sha256=3ad9587ed3940bf7897ea64a673971415523f4f7d6b22c5e3af5219705669653
-  mustermann (3.0.3) sha256=d1f8e9ba2ddaed47150ddf81f6a7ea046826b64c672fbc92d83bce6b70657e88
-  nio4r (2.7.4) sha256=d95dee68e0bb251b8ff90ac3423a511e3b784124e5db7ff5f4813a220ae73ca9
-  puma (6.6.0) sha256=f25c06873eb3d5de5f0a4ebc783acc81a4ccfe580c760cfe323497798018ad87
-  rack (3.1.12) sha256=00d83055c89273eb13679ab562767b8826955aa6c4371d7d161deb975c50c540
-  rack-protection (4.1.1) sha256=51a254a5d574a7f0ca4f0672025ce2a5ef7c8c3bd09c431349d683e825d7d16a
-  rack-session (2.0.0) sha256=db04b2063e180369192a9046b4559af311990af38c6a93d4c600cee4eb6d4e81
-  ruby2_keywords (0.0.5) sha256=ffd13740c573b7301cf7a2e61fc857b2a8e3d3aff32545d6f8300d8bae10e3ef
-  sinatra (4.1.1) sha256=4e997b859aa1b5d2e624f85d5b0fd0f0b3abc0da44daa6cbdf10f7c0da9f4d00
-  tilt (2.4.0) sha256=df74f29a451daed26591a85e8e0cebb198892cb75b6573394303acda273fba4d
-
-RUBY VERSION
-   ruby 3.4.2p28
-
 BUNDLED WITH
-   2.6.4
+   2.4.19

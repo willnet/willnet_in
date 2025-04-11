@@ -1,25 +1,23 @@
-# syntax = docker/dockerfile:1
+# Shared image, envs, packages for both devcontainer & prod.
+FROM ruby:3.2-bullseye
 
-ARG RUBY_VERSION=3.4.2
-FROM ruby:${RUBY_VERSION}-slim AS base
+# Install the AWS Lambda Runtime Interface Client & Crypteia for secure SSM-backed envs.
+RUN gem install 'aws_lambda_ric'
+COPY --from=ghcr.io/rails-lambda/crypteia-extension-debian:1 /opt /opt
+ENTRYPOINT [ "/usr/local/bundle/bin/aws_lambda_ric" ]
+ENV LD_PRELOAD=/opt/lib/libcrypteia.so
 
-WORKDIR /willnet_in
+# Create a secure user for prod and app directory.
+RUN mkdir /app \
+    && groupadd -g 10001 app \
+    && useradd -u 10000 -g app app \
+    && chown -R app:app /app
+USER app
+WORKDIR "/app"
 
-ENV BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle"
-
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-COPY Gemfile Gemfile.lock .ruby-version ./
-RUN bundle install && \
-    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
-
+# Copy prod application files and set handler.
+ENV BUNDLE_IGNORE_CONFIG=1
+ENV BUNDLE_PATH=./vendor/bundle
+ENV BUNDLE_CACHE_PATH=./vendor/cache
 COPY . .
-
-RUN useradd willnet --home /willnet_in --shell /bin/bash
-USER willnet:willnet
-
-EXPOSE 80
-CMD ["bundle", "exec", "puma", "--port", "80", "-e", "production"]
+CMD ["environment.Lamby.cmd"]

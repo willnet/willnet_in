@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: WillnetIn
+
+Parameters:
+
+  RackEnv:
+    Type: String
+    Default: staging
+    AllowedValues:
+      - staging
+      - production
+
+Globals:
+
+  Function:
+    Architectures:
+      - arm64
+    AutoPublishAlias: live
+    DeploymentPreference:
+      Type: AllAtOnce
+    Environment:
+      Variables:
+        RACK_ENV: !Ref RackEnv
+    Timeout: 30
+
+Resources:
+
+  RailsLambda:
+    Type: AWS::Serverless::Function
+    Metadata:
+      DockerContext: .
+      Dockerfile: Dockerfile
+      DockerTag: web
+    Properties:
+      FunctionUrlConfig:
+        AuthType: NONE
+      MemorySize: 512
+      PackageType: Image
+
+Outputs:
+
+  RailsLambdaUrl:
+    Description: Lambda Function URL
+    Value: !GetAtt RailsLambdaUrl.FunctionUrl
