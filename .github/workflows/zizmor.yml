@@ -2,12 +2,17 @@ name: zizmor
 
 on:
   push:
+    paths:
+      - '.github/workflows/**'
   pull_request:
+    paths:
+      - '.github/workflows/**'
 
 jobs:
   zizmor:
     runs-on: ubuntu-24.04
     permissions:
+      contents: read
       security-events: write
     steps:
       - name: Checkout
