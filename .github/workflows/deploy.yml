@@ -39,6 +39,7 @@ jobs:
       - name: Deploy
         uses: devcontainers/ci@b63b30de439b47a52267f241112c5b453b673db5 # v0.3
         with:
+          push: never
           env: |
             CI
             AWS_ACCESS_KEY_ID
