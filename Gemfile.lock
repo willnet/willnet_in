@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aws_lambda_ric (3.2.0)
+      logger (>= 1.4, < 2.0)
     base64 (0.3.0)
     lambda-console-ruby (1.0.0)
     lamby (6.0.1)
@@ -32,9 +34,11 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm64-darwin-25
   x86_64-linux
 
 DEPENDENCIES
+  aws_lambda_ric
   lamby
   puma
   sinatra
