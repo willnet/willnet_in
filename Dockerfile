@@ -1,10 +1,9 @@
 # Shared image, envs, packages for both devcontainer & prod.
 FROM ruby:3.2-bullseye
 
-# Install the AWS Lambda Runtime Interface Client & Crypteia for secure SSM-backed envs.
-RUN gem install 'aws_lambda_ric'
+# Install Crypteia for secure SSM-backed envs.
 COPY --from=ghcr.io/rails-lambda/crypteia-extension-debian:1 /opt /opt
-ENTRYPOINT [ "/usr/local/bundle/bin/aws_lambda_ric" ]
+ENTRYPOINT [ "bundle", "exec", "aws_lambda_ric" ]
 ENV LD_PRELOAD=/opt/lib/libcrypteia.so
 
 # Create a secure user for prod and app directory.
