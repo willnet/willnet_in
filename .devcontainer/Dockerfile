@@ -1,11 +1,13 @@
 # Shared image, envs, packages for both devcontainer & prod.
-FROM ruby:3.2-bullseye
-RUN apt update
+FROM ruby:3.4-bookworm
 
-# Temporary multi-platform SAM CLI install method.
-# https://github.com/aws/aws-sam-cli/issues/3908
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
-RUN apt-get install -y pip && pip install aws-sam-cli
+# Install SAM CLI in a virtual environment to keep Debian's Python managed by apt.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3-venv python-is-python3 \
+    && python3 -m venv /opt/aws-sam-cli \
+    && /opt/aws-sam-cli/bin/pip install --no-cache-dir aws-sam-cli \
+    && rm -rf /var/lib/apt/lists/*
+ENV PATH="/opt/aws-sam-cli/bin:${PATH}"
 
 # Local devcontainer Codespaces compatibility.
 RUN mkdir -p /workspaces/willnet_in

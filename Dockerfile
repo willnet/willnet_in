@@ -1,5 +1,5 @@
 # Shared image, envs, packages for both devcontainer & prod.
-FROM ruby:3.2-bullseye
+FROM ruby:3.4-bookworm
 
 # Install Crypteia for secure SSM-backed envs.
 COPY --from=ghcr.io/rails-lambda/crypteia-extension-debian:1 /opt /opt
