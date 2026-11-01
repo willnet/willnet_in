@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    aws_lambda_ric (3.2.0)
+    aws_lambda_ric (3.2.1)
       logger (>= 1.4, < 2.0)
     base64 (0.3.0)
     lambda-console-ruby (1.0.0)
